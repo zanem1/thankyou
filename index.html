@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Borealis Thank You Card</title>
+  <style>
+    body {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      background: url("https://eadn-wc03-3994872.nxedge.io/wp-content/uploads/2022/11/northern-lights_William-Moore_web-e1669072525287.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-shadow: 0 0 2px #000;
+      line-height: 1.5;
+      padding: 20px;
+    }
+    .card {
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .header {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .message, .signature {
+      font-size: 22px;
+      margin-bottom: 20px;
+      white-space: pre-wrap;
+    }
+    .signature {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="card">
+    <div class="header">The Borealis</div>
+    <div class="message">
+    </div>
+    <div class="signature">
+    </div>
+  </div>
+
+  <script>
+    // Simulating the typing effect
+    const messages = [
+      'Dear Tammy and Kirk Gladwin,\n\n',
+      'We wanted to extend our heartfelt gratitude for the wonderful gifts and the unforgettable stay at your beautiful home. Your hospitality made our trip truly special, and we can\'t thank you enough for your kindness and thoughtfulness.\n\n',
+      'The serene ambiance and beauty of "The Borealis" have left a lasting impression on us. Your generosity and warmth have made this experience amazing.\n\n',
+      'Once again, thank you for everything! We feel blessed to have family like you in our lives.\n\n',
+      'With love and appreciation,\n\n',
+      'Zane Campbell'
+    ];
+
+    const messageElement = document.querySelector('.message');
+    const signatureElement = document.querySelector('.signature');
+
+    async function typeMessage(index, element) {
+      if (index < messages.length) {
+        let text = messages[index];
+        for (let letterIndex = 0; letterIndex < text.length; letterIndex++) {
+          await sleep(100); // Adjust the delay (in milliseconds) to control the typing speed
+          element.textContent += text[letterIndex];
+        }
+        await sleep(100); // Pause for a short time before typing the next message
+        element.textContent += '\n\n'; // Move to the next line
+        await typeMessage(index + 1, element);
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    typeMessage(0, messageElement);
+    typeMessage(4, signatureElement);
+  </script>
+</body>
+</html>
