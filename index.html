@@ -67,7 +67,7 @@
           element.textContent += text[letterIndex];
         }
         await sleep(100); // Pause for a short time before typing the next message
-        element.textContent += '\n\n'; // Move to the next line
+        element.textContent = ''; // Clear the current element's text before typing the next message
         await typeMessage(index + 1, element);
       }
     }
@@ -77,7 +77,6 @@
     }
 
     typeMessage(0, messageElement);
-    typeMessage(4, signatureElement);
   </script>
 </body>
 </html>
